@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Management</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        th { background: #4CAF50; color: white; }
+        a { text-decoration: none; color: white; padding: 5px 10px; background: #4CAF50; }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Student Management System</h2>
+
+<div style="text-align:center;">
+    <a href="/addStudent">Add Student</a>
+</div>
+
+<br>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.course}"></td>
+        <td>
+            <a th:href="@{/deleteStudent/{id}(id=${student.id})}" style="background:red;">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
